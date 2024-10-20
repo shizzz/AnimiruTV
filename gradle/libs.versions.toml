@@ -13,9 +13,10 @@ shizuku_version = "12.2.0"
 sqldelight = "2.0.0"
 sqlite = "2.4.0"
 voyager = "1.0.0"
+tvMaterialVersion = "1.0.0"
 
 [libraries]
-desugar = "com.android.tools:desugar_jdk_libs:2.0.4"
+desugar = "com.android.tools:desugar_jdk_libs:2.1.2"
 android-shortcut-gradle = "com.github.zellius:android-shortcut-gradle-plugin:0.1.2"
 
 rxjava = "io.reactivex:rxjava:1.3.8"
@@ -59,7 +60,7 @@ natural-comparator = "com.github.gpanther:java-nat-sort:natural-comparator-1.1"
 richtext-commonmark = { module = "com.halilibo.compose-richtext:richtext-commonmark", version.ref = "richtext" }
 richtext-m3 = { module = "com.halilibo.compose-richtext:richtext-ui-material3", version.ref = "richtext" }
 
-material = "com.google.android.material:material:1.11.0"
+material = "com.google.android.material:material:1.12.0"
 flexible-adapter-core = "com.github.arkon.FlexibleAdapter:flexible-adapter:c8013533"
 # AM (REMOVE_LIBRARIES) -->
 # photoview = "com.github.chrisbanes:PhotoView:2.3.0"
@@ -124,6 +125,7 @@ truetypeparser = "io.github.yubyf:truetypeparser-light:2.1.4"
 # AM (SYNC_DRIVE) -->
 google-api-services-drive = "com.google.apis:google-api-services-drive:v3-rev197-1.25.0"
 google-api-client-oauth = "com.google.oauth-client:google-oauth-client:1.34.1"
+tv-material = { group = "androidx.tv", name = "tv-material", version.ref = "tvMaterialVersion" }
 # <-- AM (SYNC_DRIVE)
 
 [bundles]
