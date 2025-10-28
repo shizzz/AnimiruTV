@@ -106,6 +106,7 @@ class PlayerControlsView @JvmOverloads constructor(context: Context, attrs: Attr
         }
 
         binding.prevBtn.setOnClickListener { switchEpisode(previous = true) }
+        binding.prevBtn.requestFocus()
         binding.playBtn.setOnClickListener { playPause() }
         binding.nextBtn.setOnClickListener { switchEpisode(previous = false) }
 
@@ -337,6 +338,12 @@ class PlayerControlsView @JvmOverloads constructor(context: Context, attrs: Attr
 
     internal fun updateBufferPosition(bufferPosition: Int) {
         seekbar.updateSeekbar(readAheadValue = bufferPosition.toFloat())
+    }
+
+    public fun getControlsVisiblity(): Boolean
+    {
+        val itemView = if (SeekState.mode == SeekState.LOCKED) binding.lockedView else binding.unlockedView
+        return itemView.isVisible
     }
 
     internal fun showAndFadeControls() {

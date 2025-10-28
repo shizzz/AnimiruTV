@@ -29,6 +29,7 @@ import androidx.compose.material.icons.filled.Brush
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.HourglassEmpty
 import androidx.compose.material.icons.filled.PersonOutline
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material.icons.outlined.AttachMoney
 import androidx.compose.material.icons.outlined.Block
@@ -175,6 +176,7 @@ fun AnimeActionRow(
     onWebViewLongClicked: (() -> Unit)?,
     onTrackingClicked: () -> Unit,
     onEditIntervalClicked: (() -> Unit)?,
+    onRefreshClicked: () -> Unit,
     onEditCategory: (() -> Unit)?,
     modifier: Modifier = Modifier,
 ) {
@@ -225,6 +227,12 @@ fun AnimeActionRow(
             icon = if (trackingCount == 0) Icons.Outlined.Sync else Icons.Outlined.Done,
             color = if (trackingCount == 0) defaultActionButtonColor else MaterialTheme.colorScheme.primary,
             onClick = onTrackingClicked,
+        )
+        AnimeActionButton(
+            title = stringResource(MR.strings.action_webview_refresh),
+            icon = Icons.Default.Refresh,
+            color = MaterialTheme.colorScheme.primary,
+            onClick = onRefreshClicked,
         )
 
         if (onWebViewClicked != null) {

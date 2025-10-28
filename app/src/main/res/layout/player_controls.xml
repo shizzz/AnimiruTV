@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+	android:descendantFocusability="blocksDescendants"
     tools:ignore="RtlHardcoded,HardcodedText">
 
     <!-- Locked player check -->
@@ -70,6 +71,7 @@
                 android:maxLines="1"
                 android:clickable="true"
                 android:focusable="true"
+				android:focusableInTouchMode="true"
                 app:layout_constraintLeft_toRightOf="@id/backArrowBtn"
                 app:layout_constraintRight_toLeftOf="@id/episodeListBtn"
                 app:layout_constraintTop_toTopOf="parent"
@@ -87,6 +89,7 @@
                 android:maxLines="1"
                 android:clickable="true"
                 android:focusable="true"
+				android:focusableInTouchMode="true"
                 app:layout_constraintLeft_toRightOf="@id/backArrowBtn"
                 app:layout_constraintRight_toLeftOf="@id/episodeListBtn"
                 app:layout_constraintTop_toBottomOf="@id/titleMainTxt"
@@ -180,6 +183,8 @@
 
             <ImageButton
                 android:id="@+id/prevBtn"
+				android:focusableInTouchMode="true"
+				android:clickable="true"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginRight="256dp"
@@ -195,6 +200,8 @@
 
             <ImageButton
                 android:id="@+id/play_btn"
+				android:focusableInTouchMode="true"
+				android:clickable="true"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
@@ -211,6 +218,8 @@
 
             <ImageButton
                 android:id="@+id/nextBtn"
+				android:focusableInTouchMode="true"
+				android:clickable="true"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginLeft="256dp"
@@ -363,6 +372,9 @@
 
             <androidx.compose.ui.platform.ComposeView
                 android:id="@+id/playbackSeekbar"
+				android:focusable="true"
+				android:focusableInTouchMode="true"
+				android:clickable="true"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center_vertical"

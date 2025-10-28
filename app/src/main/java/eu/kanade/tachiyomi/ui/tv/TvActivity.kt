@@ -116,7 +116,6 @@ import uy.kohesive.injekt.injectLazy
 import androidx.compose.ui.graphics.Color.Companion as ComposeColor
 
 class TvActivity : BaseActivity() {
-
     private val sourcePreferences: SourcePreferences by injectLazy()
     private val libraryPreferences: LibraryPreferences by injectLazy()
     private val uiPreferences: UiPreferences by injectLazy()
@@ -222,7 +221,6 @@ class TvActivity : BaseActivity() {
                     disposeSteps = true,
                 ),
             ) { navigator ->
-
                 LaunchedEffect(navigator) {
                     this@TvActivity.navigator = navigator
 

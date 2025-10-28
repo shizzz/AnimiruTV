@@ -1081,6 +1081,7 @@ class PlayerActivity : BaseActivity() {
     internal fun changeEpisode(episodeId: Long?, autoPlay: Boolean = false) {
         animationHandler.removeCallbacks(nextEpisodeRunnable)
         viewModel.closeDialogSheet()
+        playerControls.hideControls(false)
 
         player.paused = true
         showLoadingIndicator(true)
@@ -1344,19 +1345,54 @@ class PlayerActivity : BaseActivity() {
                 return true
             }
             KeyEvent.KEYCODE_DPAD_RIGHT -> {
-                val interval = playerPreferences.skipLengthPreference().get()
-                if (interval != 0) {
-                    doubleTapSeek(interval, isDoubleTap = false)
+                if (playerControls.getControlsVisiblity())
+                {
+                    super.onKeyDown(keyCode, event)
+                } else {
+                    val interval = playerPreferences.skipLengthPreference().get()
+                    if (interval != 0) {
+                        doubleTapSeek(interval, isDoubleTap = false)
+                    }
                 }
                 return true
             }
             KeyEvent.KEYCODE_DPAD_LEFT -> {
-                val interval = playerPreferences.skipLengthPreference().get()
-                if (interval != 0) {
-                    doubleTapSeek(-interval, isDoubleTap = false)
+                if (playerControls.getControlsVisiblity())
+                {
+                    super.onKeyDown(keyCode, event)
+                } else {
+                    val interval = playerPreferences.skipLengthPreference().get()
+                    if (interval != 0) {
+                        doubleTapSeek(-interval, isDoubleTap = false)
+                    }
                 }
                 return true
             }
+            KeyEvent.KEYCODE_DPAD_UP -> {
+                if (playerControls.getControlsVisiblity())
+                {
+                    super.onKeyDown(keyCode, event)
+                } else {
+                    changeEpisode(viewModel.getAdjacentEpisodeId(previous = false))
+                }
+                return true
+            }
+            KeyEvent.KEYCODE_DPAD_DOWN -> {
+                if (playerControls.getControlsVisiblity())
+                {
+                    super.onKeyDown(keyCode, event)
+                } else {
+                    changeEpisode(viewModel.getAdjacentEpisodeId(previous = true))
+                }
+                return true
+            }
+            KeyEvent.KEYCODE_DPAD_CENTER -> {
+                doubleTapPlayPause()
+                playerControls.hideControls(!playerControls.getControlsVisiblity())
+                super.onKeyDown(keyCode, event)
+                return true
+            }
+
             KeyEvent.KEYCODE_LEFT_BRACKET -> {
                 changeEpisode(viewModel.getAdjacentEpisodeId(previous = true))
                 return true
